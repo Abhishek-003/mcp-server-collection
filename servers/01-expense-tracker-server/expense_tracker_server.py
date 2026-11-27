@@ -43,8 +43,8 @@ def get_expenses() -> list:
     """
     with sqlite3.connect(DB_PATH) as c:
         c.row_factory = sqlite3.Row
-        c.execute("SELECT * FROM expenses")
-        rows = c.fetchall()
+        cursor = c.execute("SELECT * FROM expenses")
+        rows = cursor.fetchall()
         return [dict(row) for row in rows]
 
 if __name__ == "__main__":
